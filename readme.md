@@ -1,14 +1,18 @@
-# **Async Pattern Example**
+# **hight preformence order system**
 ## **Introduction**
-使用訂單系統為範例，以符合clean architecture 之方式撰寫，示範如何使用rabbitmq進行非同步任務
-之處理，避免不必要網路IO等待，並實作了message broker的connection pool，
-以此方式建構分散式服務能夠提高整體效能，且服務之間的鬆耦合有助於後續維護、再開發與水平擴展。
+使用訂單系統為範例，以符合clean architecture 之方式撰寫，示範如何使用redis對資料進行緩存，
+以及使用rabbitmq進行非同步任務之處理，提高系統乘載極限以即可擴展性。
 
 ## **技術點**
 * Clean Architecture
 * Message Broker ( RabbitMQ )
+* Cache ( Redis )
+* DB ( MySQL )
 * Message Broker Connection Pool
 * Docker
+
+## 系統架構
+![image](https://github.com/francischi/high-concurrent-order-system/images/system_design.jpg)
 
 ## 使用方式
 * rabbitmq
