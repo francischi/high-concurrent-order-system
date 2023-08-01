@@ -1,11 +1,11 @@
 # **hight preformence order system**
 ## **Introduction**
 使用訂單系統為範例，以符合clean architecture 之方式撰寫，示範如何使用redis對資料進行緩存，
-以及使用rabbitmq進行非同步任務之處理，提高系統乘載極限以即可擴展性。
+以及使用rabbitmq進行非同步任務之處理，提高系統乘載極限以及可擴展性。
 
 ## 場景分析
 * 大流量
-* 需要及時得到結果
+* 需要即時得到結果
 * 資料正確性( race condition )
 * 多物件搶鎖機制
 
