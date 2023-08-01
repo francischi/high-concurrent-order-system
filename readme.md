@@ -12,7 +12,7 @@
 * Docker
 
 ## 系統架構
-![image](https://github.com/francischi/high-concurrent-order-system/images/system_design.jpg)
+![image](https://github.com/francischi/high-concurrent-order-system/blob/main/images/system_design.jpg)
 
 ## 使用方式
 * rabbitmq
