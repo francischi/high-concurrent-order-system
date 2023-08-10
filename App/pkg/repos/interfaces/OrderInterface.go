@@ -2,6 +2,6 @@ package interfaces
 
 type OrderRepo interface{
 
-	AddOrder(orderId string , orderProducta map[string]int)(err error)
+	AddOrder(memberId string , orderProducta map[string]int)(err error)
 
 }

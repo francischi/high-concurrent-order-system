@@ -33,8 +33,8 @@ func (s *MemberService)Create(dto *dtos.CreateMemberDto)(err error){
 	if s.MemberRepo.IsEmailExist(dto.Email) {
 		return s.InvalidArgument("account_existed")
 	}
-	MemberModel := models.MemberModel{
-		MemberId : h.CreateUuid(),
+	MemberModel := models.Member{
+		MemberUuid : h.CreateUuid(),
 		Name : dto.Name,
 		Gender: dto.Gender,
 		Password : h.GetSHA256HashCode(dto.Password),
@@ -61,7 +61,7 @@ func (s *MemberService) LogIn(dto *dtos.LogInDto)(token string ,err error){
 	if hashedPassword != memberModel.Password{
 		return "",s.InvalidArgument("password_not_match")
 	}
-	token,err = s.TokenService.Create(memberModel.MemberId , memberModel.Name)
+	token,err = s.TokenService.Create(memberModel.MemberUuid , memberModel.Name)
 	if err != nil{
 		return "",err
 	}

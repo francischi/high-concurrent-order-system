@@ -160,11 +160,11 @@ Content-Type : ```application/json```
 {
     "products":[
         {
-            "productId":"thisisId" , 
+            "productId":"a9ca26df-9c8a-4d41-85b5-5afd605e0e2f" , 
             "quantity":6
         },
         {
-            "productId":"isId" , 
+            "productId":"4e0c3b77-ba50-477b-85d1-b99bb6129115" , 
             "quantity":6
         }
     ],

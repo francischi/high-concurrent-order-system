@@ -6,8 +6,8 @@
 ## 場景分析
 * 大流量
 * 需要即時得到結果
-* 資料正確性( race condition )
-* 多物件搶鎖機制
+* 注重資料正確性( 避免race condition )
+* 搶多個鎖機制
 
 ## **技術點**
 * Clean Architecture
@@ -27,25 +27,49 @@
 讓訂單可以被consumer消耗，若訂單量大也可啟動多個consumer達到水平擴展。
 
 ## 使用方式
-* rabbitmq
-```
-> docker pull rabbitmq:management
-> docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
+* start rabbitmq
+    ```
+    > docker pull rabbitmq:management
+    > docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
 
-透過localhost:15672查看rabbitmq是否啟動
-```
+    透過localhost:15672查看rabbitmq是否啟動
+    ```
 
+* start redis
+    ```
+    > docker pull redis
+    > docker run --name redis -p 6379:6379 -d redis
+    ```
+* create .env
+    ```
+    copy .env.example in each folder(App、mailConsumer、prductConsumer)
+    and change to your own setting
+    ```
+* migrate 
+    ```
+    create a DB name it as same as .env
+    > cd App
+    > go run ./pkg/migrate/migrate.go
+
+    will create members、orders、products three tables and seed product data
+    ```
 * app
-```
-> cd ./App
-> go run main.go
-```
+    ```
+    > cd App
+    > go run main.go
+    ```
 
-* consumer
-```
-> cd ../OrderConsumer
-> go run main.go
-```
+* mailConsumer
+    ```
+    > cd OrderConsumer
+    > go run main.go
+    ```
+
+* productConsumer
+    ```
+    > cd productConsumer
+    > go run main.go
+    ```
 
 <br>
 

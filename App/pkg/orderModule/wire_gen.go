@@ -21,10 +21,10 @@ import (
 func InitialOrderController() *OrderController {
 	db := helpers.NewSqlSession()
 	client := helpers.NewRedisClient()
-	productRepo := implement.NewProductRepo(db, client)
-	productService := productModule.NewProductService(productRepo)
 	connPool := helpers.GetConnPool()
-	orderRepo := implement.NewOrderRepo(connPool)
+	productRepo := implement.NewProductRepo(db, client, connPool)
+	productService := productModule.NewProductService(productRepo)
+	orderRepo := implement.NewOrderRepo(db, connPool)
 	mailRepo := implement.NewMailRepo(connPool)
 	mailService := common.NewMailService(mailRepo)
 	orderService := NewOrderService(productService, orderRepo, mailService)

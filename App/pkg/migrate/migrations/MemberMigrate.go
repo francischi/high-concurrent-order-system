@@ -6,6 +6,6 @@ import (
 )
 
 func Member(db *gorm.DB){
-	var MemberModel models.MemberModel
+	var MemberModel models.Member
 	db.AutoMigrate(&MemberModel)
 }

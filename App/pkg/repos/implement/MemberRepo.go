@@ -17,7 +17,7 @@ func NewMemberRepo(db *gorm.DB) *MemberRepo{
 	return &MemberRepo{DBconn:db}
 }
 
-func (m *MemberRepo) Create(member models.MemberModel)(err error){
+func (m *MemberRepo) Create(member models.Member)(err error){
 	error := m.DBconn.Create(&member).Error
 	if error!=nil{
 		return m.SystemError("member_repo_error :"+error.Error()) 
@@ -25,8 +25,8 @@ func (m *MemberRepo) Create(member models.MemberModel)(err error){
 	return error
 }
 
-func (m *MemberRepo) GetMember(memberId string)(member models.MemberModel , err error){
-	var model models.MemberModel
+func (m *MemberRepo) GetMember(memberId string)(member models.Member , err error){
+	var model models.Member
 	error := m.DBconn.First(&model , "member_id=?",memberId).Error
 	if errors.Is(err, gorm.ErrRecordNotFound){
 		return model , m.InvalidArgument("no_matched_account")
@@ -37,8 +37,8 @@ func (m *MemberRepo) GetMember(memberId string)(member models.MemberModel , err 
 	return model , error
 }
 
-func (m *MemberRepo) GetMemberByEmail(email string)(member models.MemberModel , err error){
-	var model models.MemberModel
+func (m *MemberRepo) GetMemberByEmail(email string)(member models.Member , err error){
+	var model models.Member
 	error := m.DBconn.First(&model , "email=?",email).Error
 	if error!=nil{
 		return model , m.SystemError("member_repo_error :"+error.Error())
@@ -47,7 +47,7 @@ func (m *MemberRepo) GetMemberByEmail(email string)(member models.MemberModel , 
 }
 
 func (m *MemberRepo ) ChangePwd(memberId string , newPwd string)(err error){
-	var model models.MemberModel
+	var model models.Member
 	error := m.DBconn.First(&model , "member_id=?",memberId).Update("password", newPwd).Error
 	if error!=nil{
 		return m.SystemError("member_repo_error :"+error.Error())
@@ -56,7 +56,7 @@ func (m *MemberRepo ) ChangePwd(memberId string , newPwd string)(err error){
 }
 
 func (m *MemberRepo) IsEmailExist(email string) bool {
-	var model models.MemberModel
+	var model models.Member
 	var count int64
 
 	m.DBconn.Model(&model).Where("email", email).Count(&count)

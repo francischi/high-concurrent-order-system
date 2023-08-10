@@ -6,6 +6,6 @@ import (
 )
 
 func Order(db *gorm.DB){
-	var OrderModel models.OrderModel
+	var OrderModel models.Order
 	db.AutoMigrate(&OrderModel)
 }

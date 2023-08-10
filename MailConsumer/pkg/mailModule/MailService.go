@@ -1,7 +1,6 @@
 package mailModule
 
 import (
-	"fmt"
 	"mailConsumer/pkg/base"
 	"mailConsumer/pkg/repos/implement"
 )
@@ -22,7 +21,6 @@ func(s *MailService) Send(dto *SendDto)(err error){
 		return s.InvalidArgument(err.Error())
 	}
 	if err = s.MailRepo.SendMail(dto.Context , dto.To);err!=nil{
-		fmt.Println(dto)
 		return err
 	}
 

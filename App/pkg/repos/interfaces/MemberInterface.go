@@ -6,11 +6,11 @@ import(
 
 type MemberRepo interface {
 	
-	Create(member models.MemberModel)(err error)
+	Create(member models.Member)(err error)
 
-	GetMember(memberId string)(member models.MemberModel , err error)
+	GetMember(memberId string)(member models.Member , err error)
 
-	GetMemberByEmail(email string)(member models.MemberModel , err error)
+	GetMemberByEmail(email string)(member models.Member , err error)
 
 	ChangePwd(memberId string , newPwd string)(err error)
 

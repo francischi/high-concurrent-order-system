@@ -1,0 +1,16 @@
+package models
+
+type Product struct{
+	Id         	int    `json:"id"`
+	ProductUuid   string `gorm:"type:varchar(36);not null;index:product_uuid"`
+	Name       	string `gorm:"type:varchar(100);not null"`
+	Price		int    `gorm:"type:int(8) unsigned;not null"`
+	Available	int    `gorm:"type:int(10) unsigned;not null"`
+	CreateTime  int    `gorm:"type:int(10);not null"`
+	UpdateTime 	int    `gorm:"type:int(10);default:null"`
+	DeleteTime  int    `gorm:"type:int(10);default:null"`
+}
+
+func (m *Product) TableName() string {
+	return "products"
+}

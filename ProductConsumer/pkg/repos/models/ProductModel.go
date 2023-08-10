@@ -2,7 +2,7 @@ package models
 
 type ProductModel struct{
 	Id         	int    `json:"id"`
-	ProductId   string `gorm:"type:varchar(36);not null;index:product_id"`
+	ProductUuid   string `gorm:"type:varchar(36);not null;index:product_uuid"`
 	Name       	string `gorm:"type:varchar(100);not null"`
 	Price		int    `gorm:"type:int(8) unsigned;not null"`
 	Available	int    `gorm:"type:int(10) unsigned;not null"`

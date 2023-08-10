@@ -3,7 +3,6 @@ package orderModule
 import (
 	// "fmt"
 	"golang/pkg/base"
-	"golang/pkg/helpers"
 	"golang/pkg/orderModule/dtos"
 	"golang/pkg/productModule"
 	"golang/pkg/common"
@@ -39,15 +38,13 @@ func(s *OrderService)Add(dto *dtos.AddDto)(err error){
 		return err
 	}
 
-	orderId := helpers.CreateUuid()
-
-	if err:=s.OrderRepo.AddOrder( orderId , orderProducts);err!=nil{
+	if err:=s.OrderRepo.AddOrder( dto.MemberId , orderProducts);err!=nil{
 		return err
 	}
 
-	// if err:= s.MailService.SendOrderConfirmMail("Thanks for making an order!" , dto.Buyer);err!=nil{
-	// 	return err
-	// }
+	if err:= s.MailService.SendOrderConfirmMail("Thanks for making an order!" , dto.Buyer);err!=nil{
+		return err
+	}
 
 	return nil
 }
