@@ -61,13 +61,13 @@
 
 * mailConsumer
     ```
-    > cd OrderConsumer
+    > cd MailConsumer
     > go run main.go
     ```
 
 * productConsumer
     ```
-    > cd productConsumer
+    > cd ProductConsumer
     > go run main.go
     ```
 
