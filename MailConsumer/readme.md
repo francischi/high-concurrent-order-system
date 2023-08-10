@@ -1,4 +1,4 @@
-# **Async Pattern Example - Consumer**
+# **MailConsumer**
 
 ## **Introduction**
 此為message broker 中的consumer，負責對rabbitmq進行連線並發出信件，
